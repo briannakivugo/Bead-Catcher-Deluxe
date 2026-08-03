@@ -20,6 +20,8 @@ let beadX;
 let beadY;
 let beadSize = 28;
 let beadSpeed = 4;
+let gemColor;
+let gemPoints;
 
 // Game data
 let score = 0;
@@ -259,7 +261,8 @@ push();
 translate(beadX, beadY);
 
 // Outer gem
-fill(0,180,255);
+
+fill(gemColor);
 
 stroke(255);
 strokeWeight(2);
@@ -492,13 +495,51 @@ function startGame(){
 // =============================
 // RESET BEAD
 // =============================
+
 function resetBead(){
 
-  beadX=random(40,width-40);
+  beadX = random(40, width - 40);
+  beadY = -20;
 
-  beadY=-20;
+  let r = random();
+
+  if(r < 0.50){
+
+    gemColor = color(0,180,255);   // Blue
+    gemPoints = 1;
+
+  }
+  else if(r < 0.75){
+
+    gemColor = color(0,220,120);   // Green
+    gemPoints = 2;
+
+  }
+  else if(r < 0.90){
+
+    gemColor = color(255,60,60);   // Red
+    gemPoints = 3;
+
+  }
+  else if(r < 0.98){
+
+    gemColor = color(255,210,0);   // Gold
+    gemPoints = 5;
+
+  }
+  else{
+
+    gemColor = color(255);         // Diamond
+    gemPoints = 10;
+
+  }
 
 }
+
+
+
+
+
 
 function createSparkles(x, y){
 
