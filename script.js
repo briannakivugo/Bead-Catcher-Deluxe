@@ -307,7 +307,7 @@ if(
   beadX < basketX+basketWidth/2
 ){
 
-  score++;
+  score += gemPoints;
 
   createSparkles(
     beadX,
