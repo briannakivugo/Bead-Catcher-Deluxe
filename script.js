@@ -1,6 +1,7 @@
 // =====================================
 // 💎 BEAD CATCHER DELUXE
 // Clean Version
+// Forest Background Image
 // =====================================
 
 
@@ -18,6 +19,8 @@ let gameState = "menu";
 let canvasWidth = 600;
 let canvasHeight = 700;
 
+let forestBackground;
+
 
 // =============================
 // BASKET
@@ -29,7 +32,7 @@ let basketHeight = 15;
 
 
 // =============================
-// Beads
+// BEADS
 // =============================
 
 let beadX;
@@ -63,48 +66,43 @@ let popups = [];
 
 
 // =============================
+// PRELOAD
+// =============================
+
+function preload(){
+
+  forestBackground = loadImage(
+    "assets/forest-background.png"
+  );
+
+}
+
+
+// =============================
 // SETUP
 // =============================
 
-// =============================
-// Forest
-// =============================
-let forestTrees = [];
-
-let foregroundTrees = [];
-
-
 function setup(){
 
-  createCanvas(canvasWidth, canvasHeight);
+  createCanvas(
+    canvasWidth,
+    canvasHeight
+  );
 
   basketX = width / 2;
 
   resetBead();
 
-  textAlign(CENTER, CENTER);
+  textAlign(
+    CENTER,
+    CENTER
+  );
 
   highScore =
-    Number(localStorage.getItem("beadHighScore")) || 0;
-// Create distant forest
-for(let x = 0; x < width; x += 50){
+    Number(
+      localStorage.getItem("beadHighScore")
+    ) || 0;
 
-  forestTrees.push({
-    x: x,
-    height: random(120,180)
-  });
-
-}
-
-  // Create foreground forest
-for(let x = 0; x < width; x += 80){
-
-  foregroundTrees.push({
-    x: x,
-    height: random(180,260)
-  });
-
-}
 }
 
 
@@ -141,29 +139,59 @@ function draw(){
 
 function drawMenu(){
 
-  background(120,210,255);
-  
+  background(
+    120,
+    210,
+    255
+  );
 
-// =============================
+
+  // =============================
   // Clouds
-// =============================
-  
+  // =============================
+
   fill(255);
 
-  ellipse(100,80,80,40);
-  ellipse(150,80,100,50);
+  ellipse(
+    100,
+    80,
+    80,
+    40
+  );
 
-  ellipse(450,100,100,45);
-  ellipse(500,100,70,35);
-  
+  ellipse(
+    150,
+    80,
+    100,
+    50
+  );
 
-// =============================
+  ellipse(
+    450,
+    100,
+    100,
+    45
+  );
+
+  ellipse(
+    500,
+    100,
+    70,
+    35
+  );
+
+
+  // =============================
   // Ground
-// =============================
-  
+  // =============================
+
   rectMode(CORNER);
 
-  fill(50,120,50);
+  fill(
+    50,
+    120,
+    50
+  );
 
   rect(
     0,
@@ -172,42 +200,41 @@ function drawMenu(){
     100
   );
 
-  
-// =============================
+
+  // =============================
   // Title
-// =============================
-  
+  // =============================
+
   fill(0);
 
   textSize(55);
 
   text(
     "💎",
-    width/2,
+    width / 2,
     120
   );
-
 
   textSize(42);
 
   text(
     "BEAD CATCHER",
-    width/2,
+    width / 2,
     200
   );
-
 
   textSize(32);
 
   text(
     "DELUXE",
-    width/2,
+    width / 2,
     245
   );
 
-// =============================
+
+  // =============================
   // Play Button
-// =============================
+  // =============================
 
   rectMode(CENTER);
 
@@ -218,13 +245,12 @@ function drawMenu(){
   strokeWeight(3);
 
   rect(
-    width/2,
+    width / 2,
     380,
     220,
     70,
     20
   );
-
 
   noStroke();
 
@@ -234,136 +260,38 @@ function drawMenu(){
 
   text(
     "PLAY",
-    width/2,
+    width / 2,
     380
   );
 
-// =============================
+
+  // =============================
   // High Score
-// =============================
-  
+  // =============================
+
   textSize(22);
 
   text(
     "🏆 High Score: " + highScore,
-    width/2,
+    width / 2,
     500
   );
 
 
+  // =============================
   // Instructions
+  // =============================
 
-  
   textSize(18);
 
   text(
     "Move your mouse to catch gems!",
-    width/2,
+    width / 2,
     550
   );
 
-
 }
 
-// =============================
-// FOREST BACKGROUND
-// =============================
-
-// =============================
-// FOREST BACKGROUND
-// =============================
-
-function drawForestBackground(){
-
-  // Sky / distant atmosphere
-  background(40,70,55);
-
-  // Distant forest
-  noStroke();
-
-  fill(25,55,40);
-
-  for(let tree of forestTrees){
-
-    triangle(
-      tree.x,
-      height - 100,
-      tree.x + 25,
-      height - 100 - tree.height,
-      tree.x + 50,
-      height - 100
-    );
-
-  }
-
-  // Foreground forest
-  fill(15,40,30);
-
-  for(let tree of foregroundTrees){
-
-    // Tree trunk
-    fill(45,30,20);
-
-    rect(
-      tree.x + 32,
-      height - 100 - tree.height + 80,
-      16,
-      tree.height - 80
-    );
-
-    // Tree foliage
-    fill(15,40,30);
-
-    triangle(
-      tree.x,
-      height - 100,
-      tree.x + 40,
-      height - 100 - tree.height,
-      tree.x + 80,
-      height - 100
-    );
-
-  }
-
-// =============================
-// FOREST MIST
-// =============================
-
-function drawForestMist(){
-
-  noStroke();
-
-  fill(255,255,255,25);
-
-  rect(
-    0,
-    height - 220,
-    width,
-    120
-  );
-
-}
- 
-
-  
-// Foreground forest
-
-fill(15,40,30);
-
-for(let tree of foregroundTrees){
-
-  triangle(
-    tree.x,
-    height - 100,
-    tree.x + 40,
-    height - 100 - tree.height,
-    tree.x + 80,
-    height - 100
-  );
-
-}
-
-}
 
 // =============================
 // GAME
@@ -371,16 +299,23 @@ for(let tree of foregroundTrees){
 
 function playGame(){
 
+
   // =============================
-  // Background
+  // FOREST BACKGROUND
   // =============================
 
-  drawForestBackground();
+  image(
+    forestBackground,
+    0,
+    0,
+    width,
+    height
+  );
 
 
-// =============================
-  // Particles
-// =============================
+  // =============================
+  // PARTICLES
+  // =============================
 
   for(
     let i = particles.length - 1;
@@ -390,10 +325,13 @@ function playGame(){
 
     let p = particles[i];
 
-
     push();
 
-    fill(255,255,0);
+    fill(
+      255,
+      255,
+      0
+    );
 
     noStroke();
 
@@ -407,6 +345,7 @@ function playGame(){
 
 
     p.x += p.vx;
+
     p.y += p.vy;
 
     p.life--;
@@ -414,16 +353,19 @@ function playGame(){
 
     if(p.life <= 0){
 
-      particles.splice(i,1);
+      particles.splice(
+        i,
+        1
+      );
 
     }
 
   }
 
 
-// =============================
-  // Floating Score Popups
-// =============================
+  // =============================
+  // FLOATING SCORE POPUPS
+  // =============================
 
   for(
     let i = popups.length - 1;
@@ -432,7 +374,6 @@ function playGame(){
   ){
 
     let p = popups[i];
-
 
     fill(255);
 
@@ -448,9 +389,7 @@ function playGame(){
       p.y
     );
 
-
     noStroke();
-
 
     p.y -= 2.5;
 
@@ -459,62 +398,54 @@ function playGame(){
 
     if(p.life <= 0){
 
-      popups.splice(i,1);
+      popups.splice(
+        i,
+        1
+      );
 
     }
 
   }
 
 
-// =============================
-  // Ground
-// =============================
+  // =============================
+  // BASKET DIFFICULTY
+  // =============================
 
-  rectMode(CORNER);
+  if(score < 10){
 
-  fill(50,120,50);
+    basketWidth = 90;
 
-  rect(
-    0,
-    height - 100,
-    width,
-    100
-  );
+  }
+
+  else if(score < 20){
+
+    basketWidth = 75;
+
+  }
+
+  else if(score < 30){
+
+    basketWidth = 60;
+
+  }
+
+  else if(score < 40){
+
+    basketWidth = 50;
+
+  }
+
+  else{
+
+    basketWidth = 40;
+
+  }
 
 
-// =============================
-// Basket Difficulty
-// =============================
-
-if(score < 10){
-
-  basketWidth = 90;
-
-}
-else if(score < 20){
-
-  basketWidth = 75;
-
-}
-else if(score < 30){
-
-  basketWidth = 60;
-
-}
-else if(score < 40){
-
-  basketWidth = 50;
-
-}
-else{
-
-  basketWidth = 40;
-
-}
-
-// =============================
-  // Basket Movement
-// =============================
+  // =============================
+  // BASKET MOVEMENT
+  // =============================
 
   basketX = mouseX;
 
@@ -525,17 +456,20 @@ else{
   );
 
 
-// =============================
-  // Basket
-// =============================
+  // =============================
+  // BASKET
+  // =============================
 
   rectMode(CENTER);
 
-// =============================
+
   // Shadow
-// =============================
-  
-  fill(90,55,20);
+
+  fill(
+    90,
+    55,
+    20
+  );
 
   rect(
     basketX,
@@ -545,10 +479,14 @@ else{
     10
   );
 
-// =============================
+
   // Basket
-// =============================
-  fill(181,101,29);
+
+  fill(
+    181,
+    101,
+    29
+  );
 
   rect(
     basketX,
@@ -557,33 +495,41 @@ else{
     basketHeight,
     10
   );
-  
-// =============================
+
+
   // Rim
-// =============================
-  
-  stroke(120,70,20);
+
+  stroke(
+    120,
+    70,
+    20
+  );
 
   strokeWeight(3);
 
   line(
-    basketX - basketWidth/2,
+    basketX - basketWidth / 2,
     height - 72,
-    basketX + basketWidth/2,
+    basketX + basketWidth / 2,
     height - 72
   );
 
-// =============================
+
+  // =============================
   // Basket Weaving
-// =============================
-  stroke(155,90,30);
+  // =============================
+
+  stroke(
+    155,
+    90,
+    30
+  );
 
   strokeWeight(1);
 
-
   for(
-    let x = -basketWidth/2 + 5;
-    x <= basketWidth/2 - 5;
+    let x = -basketWidth / 2 + 5;
+    x <= basketWidth / 2 - 5;
     x += 10
   ){
 
@@ -596,19 +542,18 @@ else{
 
   }
 
-
   noStroke();
 
 
   // =============================
-  // Move Gem
+  // MOVE GEM
   // =============================
 
   beadY += beadSpeed;
 
 
   // =============================
-  // Draw Gem
+  // DRAW GEM
   // =============================
 
   push();
@@ -618,9 +563,9 @@ else{
     beadY
   );
 
-// =============================
+
   // Outer Gem
-// =============================
+
   fill(gemColor);
 
   stroke(255);
@@ -629,68 +574,106 @@ else{
 
   beginShape();
 
-  vertex(0,-18);
-  vertex(15,-5);
-  vertex(10,15);
-  vertex(0,22);
-  vertex(-10,15);
-  vertex(-15,-5);
+  vertex(
+    0,
+    -18
+  );
+
+  vertex(
+    15,
+    -5
+  );
+
+  vertex(
+    10,
+    15
+  );
+
+  vertex(
+    0,
+    22
+  );
+
+  vertex(
+    -10,
+    15
+  );
+
+  vertex(
+    -15,
+    -5
+  );
 
   endShape(CLOSE);
 
-// =============================
-  // Facets
-// =============================
+
+  // =============================
+  // Gem Facets
+  // =============================
+
   stroke(220);
 
   line(
-    0,-18,
-    0,22
+    0,
+    -18,
+    0,
+    22
   );
 
   line(
-    -15,-5,
-    15,-5
+    -15,
+    -5,
+    15,
+    -5
   );
 
   line(
-    -10,15,
-    10,15
+    -10,
+    15,
+    10,
+    15
   );
 
   line(
-    -15,-5,
-    0,22
+    -15,
+    -5,
+    0,
+    22
   );
 
   line(
-    15,-5,
-    0,22
+    15,
+    -5,
+    0,
+    22
   );
 
-// =============================
+
+  // =============================
   // Gem Sparkle
-// =============================
+  // =============================
+
   noStroke();
 
   fill(255);
 
   ellipse(
-    -4,-8,
+    -4,
+    -8,
     4
   );
 
   ellipse(
-    5,-2,
+    5,
+    -2,
     3
   );
-
 
   pop();
 
 
   // =============================
-  // Catch Gem
+  // CATCH GEM
   // =============================
 
   if(
@@ -700,18 +683,18 @@ else{
     beadY < height - 45 &&
 
     beadX >
-      basketX - basketWidth/2 &&
+      basketX - basketWidth / 2 &&
 
     beadX <
-      basketX + basketWidth/2
+      basketX + basketWidth / 2
 
   ){
 
     score += gemPoints;
 
-// =============================
+
     // Floating Score
-// =============================
+
     popups.push({
 
       x: beadX,
@@ -724,29 +707,29 @@ else{
 
     });
 
-// =============================
+
     // Sparkles
-// =============================
+
     createSparkles(
       beadX,
       beadY
     );
 
-// =============================
+
     // Increase Speed
-// =============================
+
     beadSpeed += 0.15;
 
-// =============================
+
     // New Gem
-// =============================
+
     resetBead();
 
   }
 
 
   // =============================
-  // Miss Gem
+  // MISS GEM
   // =============================
 
   if(beadY > height){
@@ -759,36 +742,38 @@ else{
 
 
   // =============================
-  // Score
+  // SCORE
   // =============================
 
-  fill(0);
+  fill(255, 220, 80);
 
   textSize(28);
 
   text(
     "Score: " + score,
-    width/2,
+    width / 2,
     35
   );
 
 
   // =============================
-  // Lives
+  // LIVES
   // =============================
 
-  textSize(24);
+  fill(255, 215, 0);
 
-  text(
-    "❤️ ".repeat(lives),
-    width/2,
-    80
-  );
+textSize(24);
 
-
-// =============================
-  // Game Over Check
-// =============================
+text(
+  "💛 ".repeat(lives),
+  width / 2,
+  80
+);
+  
+  
+  // =============================
+  // GAME OVER CHECK
+  // =============================
 
   if(lives <= 0){
 
@@ -818,14 +803,13 @@ function drawGameOver(){
 
   background(30);
 
-
   fill(255);
 
   textSize(55);
 
   text(
     "GAME OVER",
-    width/2,
+    width / 2,
     200
   );
 
@@ -834,14 +818,13 @@ function drawGameOver(){
 
   text(
     "Score: " + score,
-    width/2,
+    width / 2,
     290
   );
 
-
   text(
     "🏆 Best: " + highScore,
-    width/2,
+    width / 2,
     340
   );
 
@@ -851,7 +834,7 @@ function drawGameOver(){
   rectMode(CENTER);
 
   rect(
-    width/2,
+    width / 2,
     450,
     250,
     70,
@@ -865,43 +848,48 @@ function drawGameOver(){
 
   text(
     "PLAY AGAIN",
-    width/2,
+    width / 2,
     450
   );
 
-// =============================
-// CREDIT
-// =============================
 
-fill(255);
+  // =============================
+  // CREDIT
+  // =============================
 
-textSize(14);
-textAlign(CENTER, CENTER);
+  fill(255);
 
-text(
-  "This game was designed and created by Bri",
-  width/2,
-  height - 65
-);
+  textSize(14);
 
-text(
-  "after completing summer game design programs at",
-  width/2,
-  height - 50
-);
-
-text(
-  "Northeastern University and Girls Who Code.",
-  width/2,
-  height - 35
-);
+  textAlign(
+    CENTER,
+    CENTER
+  );
 
   text(
-  "© 2026 All rights reserved",
-  width/2,
-  height - 20
-);
-  
+    "This game was designed and created by Bri",
+    width / 2,
+    height - 65
+  );
+
+  text(
+    "after completing summer game design programs at",
+    width / 2,
+    height - 50
+  );
+
+  text(
+    "Northeastern University and Girls Who Code.",
+    width / 2,
+    height - 35
+  );
+
+  text(
+    "© 2026 All rights reserved",
+    width / 2,
+    height - 20
+  );
+
 }
 
 
@@ -911,17 +899,18 @@ text(
 
 function mousePressed(){
 
-// =============================
-  // Play Button
-// =============================
+
+  // =============================
+  // PLAY BUTTON
+  // =============================
 
   if(gameState === "menu"){
 
     if(
 
-      mouseX > width/2 - 110 &&
+      mouseX > width / 2 - 110 &&
 
-      mouseX < width/2 + 110 &&
+      mouseX < width / 2 + 110 &&
 
       mouseY > 345 &&
 
@@ -936,17 +925,17 @@ function mousePressed(){
   }
 
 
-// =============================
-  // Restart Button
-// =============================
+  // =============================
+  // RESTART BUTTON
+  // =============================
 
   else if(gameState === "gameover"){
 
     if(
 
-      mouseX > width/2 - 125 &&
+      mouseX > width / 2 - 125 &&
 
-      mouseX < width/2 + 125 &&
+      mouseX < width / 2 + 125 &&
 
       mouseY > 415 &&
 
@@ -981,18 +970,21 @@ function startGame(){
 
   gems = [];
 
+
   gems.push({
 
-  x: beadX,
-  y: beadY,
+    x: beadX,
 
-  speed: beadSpeed,
+    y: beadY,
 
-  color: gemColor,
+    speed: beadSpeed,
 
-  points: gemPoints
+    color: gemColor,
 
-});
+    points: gemPoints
+
+  });
+
 
   resetBead();
 
@@ -1018,7 +1010,9 @@ function resetBead(){
   let r = random();
 
 
+  // =============================
   // Blue = 1 point
+  // =============================
 
   if(r < 0.50){
 
@@ -1032,9 +1026,11 @@ function resetBead(){
 
   }
 
-// =============================
+
+  // =============================
   // Green = 2 points
-// =============================
+  // =============================
+
   else if(r < 0.75){
 
     gemColor = color(
@@ -1047,9 +1043,11 @@ function resetBead(){
 
   }
 
-// =============================
+
+  // =============================
   // Red = 3 points
-// =============================
+  // =============================
+
   else if(r < 0.90){
 
     gemColor = color(
@@ -1062,9 +1060,11 @@ function resetBead(){
 
   }
 
-// =============================
+
+  // =============================
   // Gold = 5 points
-// =============================
+  // =============================
+
   else if(r < 0.98){
 
     gemColor = color(
@@ -1076,9 +1076,12 @@ function resetBead(){
     gemPoints = 5;
 
   }
-// =============================
+
+
+  // =============================
   // Diamond = 10 points
-// =============================
+  // =============================
+
   else{
 
     gemColor = color(255);
@@ -1094,9 +1097,16 @@ function resetBead(){
 // CREATE SPARKLES
 // =============================
 
-function createSparkles(x, y){
+function createSparkles(
+  x,
+  y
+){
 
-  for(let i = 0; i < 18; i++){
+  for(
+    let i = 0;
+    i < 18;
+    i++
+  ){
 
     particles.push({
 
@@ -1104,11 +1114,20 @@ function createSparkles(x, y){
 
       y: y,
 
-      vx: random(-3,3),
+      vx: random(
+        -3,
+        3
+      ),
 
-      vy: random(-3,3),
+      vy: random(
+        -3,
+        3
+      ),
 
-      size: random(4,8),
+      size: random(
+        4,
+        8
+      ),
 
       life: 45
 
