@@ -11,8 +11,6 @@ This project was engineered and finalized through dual selective summer developm
 * Frameworks & Engines: p5.js Library.
 
 * ## ⚙️ Core Technical Architecture
-* Dynamic Physics & Vector Scaling: Implemented escalating velocity vectors on down-falling assets (`Candy` class) to continuously ramp up difficulty intervals.
-
-* * Variable Reward States: Programmed array-based color assignment matrices where different rendering hex-codes trigger specific numeric point-multipliers.
- 
-  * * Dynamic Input Boundaries: Engineered a responsive, shrinking player platform (`Basket` class) that continuously alters positional collision detection parameters, systematically elevating the player's mechanical processing thresholds.
+  * Dynamic Physics & Vector Scaling: Implemented escalating velocity vectors on down-falling assets (`Candy` class) to continuously ramp up difficulty intervals.
+  * Variable Reward States: Programmed array-based color assignment matrices where different rendering hex-codes trigger specific numeric point-multipliers.
+  * Dynamic Input Boundaries: Engineered a responsive, shrinking player platform (`Basket` class) that continuously alters positional collision detection parameters, systematically elevating the player's mechanical processing thresholds.
