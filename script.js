@@ -27,7 +27,7 @@ let forestBackground;
 // =============================
 
 let basketX;
-let basketWidth = 90;
+let basketWidth = 60;
 let basketHeight = 15;
 
 
@@ -137,75 +137,23 @@ function draw(){
 // MENU SCREEN
 // =============================
 
-function drawMenu(){
+  function drawMenu(){
 
-  background(
-    120,
-    210,
-    255
-  );
-
-
-  // =============================
-  // Clouds
-  // =============================
-
-  fill(255);
-
-  ellipse(
-    100,
-    80,
-    80,
-    40
-  );
-
-  ellipse(
-    150,
-    80,
-    100,
-    50
-  );
-
-  ellipse(
-    450,
-    100,
-    100,
-    45
-  );
-
-  ellipse(
-    500,
-    100,
-    70,
-    35
-  );
-
-
-  // =============================
-  // Ground
-  // =============================
-
-  rectMode(CORNER);
-
-  fill(
-    50,
-    120,
-    50
-  );
-
-  rect(
+  image(
+    forestBackground,
     0,
-    height - 100,
+    0,
     width,
-    100
+    height
   );
-
+    
+  
 
   // =============================
   // Title
   // =============================
 
-  fill(0);
+  fill(255, 220, 80);
 
   textSize(55);
 
@@ -236,40 +184,41 @@ function drawMenu(){
   // Play Button
   // =============================
 
-  rectMode(CENTER);
+rectMode(CENTER);
 
-  fill(255);
+fill(25, 65, 45);
 
-  stroke(0);
+stroke(255, 210, 70);
 
-  strokeWeight(3);
+strokeWeight(3);
 
-  rect(
-    width / 2,
-    380,
-    220,
-    70,
-    20
-  );
+rect(
+  width / 2,
+  380,
+  220,
+  70,
+  20
+);
 
-  noStroke();
+noStroke();
 
-  fill(0);
+fill(255, 220, 80);
 
-  textSize(32);
+textSize(32);
 
-  text(
-    "PLAY",
-    width / 2,
-    380
-  );
+text(
+  "PLAY",
+  width / 2,
+  380
+);
 
 
   // =============================
   // High Score
   // =============================
-
-  textSize(22);
+    fill(255, 220, 80);
+  
+    textSize(22);
 
   text(
     "🏆 High Score: " + highScore,
@@ -414,31 +363,31 @@ function playGame(){
 
   if(score < 10){
 
-    basketWidth = 90;
+    basketWidth = 60;
 
   }
 
   else if(score < 20){
 
-    basketWidth = 75;
+    basketWidth = 55;
 
   }
 
   else if(score < 30){
 
-    basketWidth = 60;
+    basketWidth = 40;
 
   }
 
   else if(score < 40){
 
-    basketWidth = 50;
+    basketWidth = 30;
 
   }
 
   else{
 
-    basketWidth = 40;
+    basketWidth = 20;
 
   }
 
@@ -563,7 +512,8 @@ function playGame(){
     beadY
   );
 
-
+  scale(0.2);
+  
   // Outer Gem
 
   fill(gemColor);
@@ -747,11 +697,11 @@ function playGame(){
 
   fill(255, 220, 80);
 
-  textSize(28);
+  textSize(16);
 
   text(
     "Score: " + score,
-    width / 2,
+    width /8,
     35
   );
 
@@ -762,12 +712,13 @@ function playGame(){
 
   fill(255, 215, 0);
 
-textSize(24);
+textSize(16);
 
 text(
   "💛 ".repeat(lives),
-  width / 2,
-  80
+  width / 7
+  ,
+  60
 );
   
   
@@ -795,15 +746,15 @@ text(
 }
 
 
-// =============================
-// GAME OVER
-// =============================
-
 function drawGameOver(){
 
-  background(30);
+  background(
+    25,
+    65,
+    45
+  );
 
-  fill(255);
+  fill(255, 220, 80);
 
   textSize(55);
 
@@ -812,7 +763,6 @@ function drawGameOver(){
     width / 2,
     200
   );
-
 
   textSize(30);
 
@@ -827,9 +777,17 @@ function drawGameOver(){
     width / 2,
     340
   );
+ 
+  // =============================
+  // PLAY AGAIN
+  // =============================
 
 
-  fill(255);
+  fill(25, 65, 45);
+  
+  stroke(255, 210, 70);
+
+  strokeWeight(3);
 
   rectMode(CENTER);
 
@@ -842,7 +800,7 @@ function drawGameOver(){
   );
 
 
-  fill(0);
+  fill(255, 220, 80);
 
   textSize(28);
 
@@ -859,7 +817,7 @@ function drawGameOver(){
 
   fill(255);
 
-  textSize(14);
+  textSize(18);
 
   textAlign(
     CENTER,
