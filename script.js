@@ -64,6 +64,11 @@ let highScore = 0;
 let particles = [];
 let popups = [];
 
+// =============================
+// BIRDS
+// =============================
+
+let birds = [];
 
 // =============================
 // PRELOAD
@@ -102,10 +107,77 @@ function setup(){
     Number(
       localStorage.getItem("beadHighScore")
     ) || 0;
+// =============================
+// CREATE BIRDS
+// =============================
+
+for(let i = 0; i < 5; i++){
+
+  birds.push({
+
+    x: random(width),
+    y: random(70, 220),
+
+    speed: random(0.3, 0.8),
+
+    size: random(8, 12)
+
+  });
 
 }
 
+  
+}
 
+// =============================
+// DRAW BIRDS
+// =============================
+
+function drawBirds(){
+
+  for(let bird of birds){
+
+    // Move bird
+    bird.x += bird.speed;
+
+    // Wrap around screen
+    if(bird.x > width + 20){
+
+      bird.x = -20;
+
+      bird.y = random(70, 220);
+
+    }
+
+    // Tiny bird
+    stroke(35, 45, 40);
+    strokeWeight(2);
+
+    noFill();
+
+    arc(
+      bird.x - bird.size,
+      bird.y,
+      bird.size * 2,
+      bird.size,
+      PI,
+      TWO_PI
+    );
+
+    arc(
+      bird.x + bird.size,
+      bird.y,
+      bird.size * 2,
+      bird.size,
+      PI,
+      TWO_PI
+    );
+
+  }
+
+  noStroke();
+
+}
 // =============================
 // MAIN LOOP
 // =============================
@@ -261,7 +333,8 @@ function playGame(){
     height
   );
 
-
+  drawBirds();
+  
   // =============================
   // PARTICLES
   // =============================
