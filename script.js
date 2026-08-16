@@ -1,7 +1,5 @@
 // =====================================
-// 💎 BEAD CATCHER DELUXE
-// Clean Version
-// Forest Background Image
+//  🍬 CANDY CATCHER 
 // =====================================
 
 
@@ -155,23 +153,32 @@ function drawBirds(){
 
     noFill();
 
-    arc(
-      bird.x - bird.size,
-      bird.y,
-      bird.size * 2,
-      bird.size,
-      PI,
-      TWO_PI
-    );
 
-    arc(
-      bird.x + bird.size,
-      bird.y,
-      bird.size * 2,
-      bird.size,
-      PI,
-      TWO_PI
-    );
+// =============================
+// FLAPPING WINGS
+// =============================
+
+let wingLift = sin(frameCount * 0.15) * 4;
+
+arc(
+  bird.x - bird.size,
+  bird.y + wingLift,
+  bird.size * 2,
+  bird.size,
+  PI,
+  TWO_PI
+);
+
+arc(
+  bird.x + bird.size,
+  bird.y + wingLift,
+  bird.size * 2,
+  bird.size,
+  PI,
+  TWO_PI
+);
+
+  
 
   }
 
@@ -230,7 +237,7 @@ function draw(){
   textSize(55);
 
   text(
-    "💎",
+    "🍬",
     width / 2,
     120
   );
@@ -238,20 +245,12 @@ function draw(){
   textSize(42);
 
   text(
-    "BEAD CATCHER",
+    "CANDY CATCHER",
     width / 2,
     200
   );
 
-  textSize(32);
-
-  text(
-    "DELUXE",
-    width / 2,
-    245
-  );
-
-
+ 
   // =============================
   // Play Button
   // =============================
@@ -884,27 +883,41 @@ function drawGameOver(){
   );
 
 
-  // =============================
+  
+  
+// =============================
+// CREDIT BACKGROUND
+// =============================
+
+noStroke();
+
+fill(10, 30, 20, 190);
+
+rectMode(CORNER);
+
+rect(
+  0,
+  height - 85,
+  width,
+  85
+);
+// =============================
   // CREDIT
   // =============================
 
-  fill(255);
+fill(255, 220, 80);
 
-  textSize(18);
-
-  textAlign(
-    CENTER,
-    CENTER
-  );
-
+textSize(14);
+textAlign(CENTER, CENTER);
+  
   text(
-    "This game was designed and created by Bri",
+    "Designed and created by Brianna Kivugo",
     width / 2,
     height - 65
   );
 
   text(
-    "after completing summer game design programs at",
+    "After completing summer game design programs at",
     width / 2,
     height - 50
   );
