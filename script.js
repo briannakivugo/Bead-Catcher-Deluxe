@@ -19,7 +19,7 @@ let canvasHeight = 700;
 
 let forestBackground;
 
-let birdSound;
+
 // =============================
 // BASKET
 // =============================
@@ -76,10 +76,6 @@ function preload(){
 
   forestBackground = loadImage(
     "assets/forest-background.png"
-  );
-  
-birdSound = loadSound(
-    "assets/bird sound file.mp3"
   );
 
 }
@@ -1038,8 +1034,7 @@ function startGame(){
   resetBead();
 
   gameState = "playing";
-  
-  birdSound.loop();
+
 }
 
 
