@@ -19,7 +19,7 @@ let canvasHeight = 700;
 
 let forestBackground;
 
-
+let birdSound;
 // =============================
 // BASKET
 // =============================
@@ -77,6 +77,10 @@ function preload(){
   forestBackground = loadImage(
     "assets/forest-background.png"
   );
+  
+birdSound = loadSound(
+    "assets/bird sound file.mp3"
+  );
 
 }
 
@@ -105,6 +109,7 @@ function setup(){
     Number(
       localStorage.getItem("beadHighScore")
     ) || 0;
+
 // =============================
 // CREATE BIRDS
 // =============================
@@ -1033,7 +1038,8 @@ function startGame(){
   resetBead();
 
   gameState = "playing";
-
+  
+  birdSound.loop();
 }
 
 
@@ -1180,3 +1186,5 @@ function createSparkles(
   }
 
 }
+
+
